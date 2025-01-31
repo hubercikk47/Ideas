@@ -1,0 +1,22 @@
+<!-- register.html -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejestracja</title>
+    {% load static %}
+    <!-- Podłącz plik CSS -->
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+    <div class="register">
+    <h1>Rejestracja</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Zarejestruj</button>
+    </form>
+    </div>
+</body>
+</html>

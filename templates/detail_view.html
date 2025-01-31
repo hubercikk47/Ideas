@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Szczegóły pomysłu</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<a href="{% url 'idea' %}">Pomysły</a>
+<nav>
+    <ul>
+        <li><a href="{% url 'idea' %}">Strona Główna</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Wyloguj</a></li>
+            <li><a href="{% url 'post' %}">Dodaj post</a></li>
+            <li><a href="{% url 'comm' %}">Dodaj komentarz</a></li>
+            <li class="login_name">{{ user.username }}</li>
+        {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Rejestracja</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<article>
+    <h2>Szczegóły pomysłu</h2>
+    {% if idea %}
+        <ul>
+            <li>
+                <strong>{{ idea.name }}</strong><br>
+                Opis: {{ idea.description }}<br>
+                Status: {{ idea.status }}<br>
+                Data utworzenia: {{ idea.date }}<br>
+                Autor: {{ idea.author}}<br>
+            </li>
+        </ul>
+    {% else %}
+        <p>Nie znaleziono szczegółów dla tego pomysłu.</p>
+    {% endif %}
+
+    <h3>Komentarze:</h3>
+    {% if comments %}
+        <ul>
+            {% for c in comments %}
+            <li>
+                Autor: {{ c.author }}<br>
+                <comment>
+                Treść: {{ c.content }}<br>
+                </comment>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Brak komentarzy.</p>
+    {% endif %}
+</article>
+
+</body>
+</html>

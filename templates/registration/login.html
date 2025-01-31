@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logowanie</title>
+    {% load static %}
+    <!-- Podłącz plik CSS -->
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+</head>
+<body>
+    <div class="login">
+    <h1>Logowanie</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Zaloguj się</button>
+    </form>
+        </div>
+</body>
+</html>

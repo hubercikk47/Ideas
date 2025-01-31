@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodawanie posta</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <a href="{% url 'idea' %}" class="h1">Pomysły</a>
+</head>
+<body>
+    <div class="form">
+    <h1>Tworzenie posta</h1>
+        <form method="POST">
+                            {% csrf_token %}
+                            {{form.as_p}}
+                            <input type="submit" value="Save">
+                        </form>
+        </div>
+</body>
+</html>
