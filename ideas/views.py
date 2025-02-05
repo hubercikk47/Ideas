@@ -58,17 +58,18 @@ def make_comment(request):
         'form': form,
         'title': 'Create New Comment',
     }
+
     if request.method == "POST":
         if form.is_valid():
             logger.info("Formularz poprawny, dodawanie komentarza")
             new_comm = form.save(commit=False)
-            new_comm.user = request.user
+            new_comm.author = request.user
             new_comm.save()
             messages.success(request, "Komentarz został dodany")
             return redirect('idea')
         else:
             logger.warning("Formularz nie przeszedł walidacji")
-            messages.error(request, "Nie udało się stworzyć komeentarza. Popraw błędy.")
+            messages.error(request, "Nie udało się stworzyć komentarza. Popraw błędy.")
 
     return render(request, 'create_idea.html', context)
 

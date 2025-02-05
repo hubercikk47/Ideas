@@ -5,17 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logowanie</title>
     {% load static %}
-    <!-- Podłącz plik CSS -->
-    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    <!-- Link to the shared CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <div class="login">
-    <h1>Logowanie</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Zaloguj się</button>
-    </form>
-        </div>
+    <header>
+        <a href="/" class="logo">Moja Strona</a>
+        <nav>
+            <ul>
+                <li><a href="/idea">Strona Główna</a></li>
+                <li><a href="/register/">Zarejestruj</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form method="post" class="login">
+            <h1>Logowanie</h1>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Zaloguj się</button>
+        </form>
+    </main>
 </body>
 </html>

@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dodawanie posta</title>
+    <title>Dodawanie komentarza</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
-    <a href="{% url 'idea' %}">Pomysły</a>
+    <link rel="stylesheet" href="{% static 'css/style3.css' %}">
 </head>
 <body>
+    <a href="{% url 'idea' %}" class="h1">Pomysły</a>
     <div class="form">
-    <h1>Dodawanie komentarza</h1>
+        <h1>Dodawanie komentarza</h1>
         <form method="POST">
-                            {% csrf_token %}
-                            {{form.as_p}}
-                            <input type="submit" value="Save">
-                        </form>
-        </div>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Zapisz">
+        </form>
+    </div>
 </body>
 </html>
+

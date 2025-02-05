@@ -8,34 +8,39 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <a href="{% url 'idea' %}">Pomysły</a>
-    <nav>
-        <ul>
-            <li><a href="{% url 'idea' %}">Strona Główna</a></li>
-            {% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Wyloguj</a></li>
-                <li><a href="{% url 'post' %}">Dodaj post</a></li>
-                <li><a href="{% url 'comm' %}">Dodaj komentarz</a></li>
-                <li class="login_name">{{ user.username }}</li>
-            {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'register' %}">Rejestracja</a></li>
+    <header>
+        <a href="{% url 'idea' %}" class="logo">Moje Pomysły</a>
+        <nav>
+            <ul>
+                <li><a href="{% url 'idea' %}">Strona Główna</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Wyloguj</a></li>
+                    <li><a href="{% url 'post' %}">Dodaj post</a></li>
+                    <li><a href="{% url 'comm' %}">Dodaj komentarz</a></li>
+                    <li class="login_name">{{ user.username }}</li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Rejestracja</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <h2>Kontent</h2>
+            {% if myideas %}
+            <ul>
+                {% for idea in myideas %}
+                    <li>
+                        <a href="{% url 'detail_view' idea.id %}">
+                            <strong>{{ idea.name }}</strong>
+                        </a><br>
+                    </li>
+                {% endfor %}
+            </ul>
             {% endif %}
-        </ul>
-    </nav>
-    <article>
-        <h2>Kontent</h2>
-{% if myideas %}
-<ul>
-    {% for idea in myideas %}
-        <li>
-            <a href="{% url 'detail_view' idea.id %}">
-                <strong>{{ idea.name }}</strong>
-            </a><br>
-        </li>
-    {% endfor %}
-</ul>
-{% endif %}
-    </article>
+        </article>
+    </main>
 </body>
 </html>
