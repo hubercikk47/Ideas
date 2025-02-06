@@ -60,9 +60,11 @@ nav a:hover {
 
 nav .login_name {
     background-color: #ddd;
-    padding: 6px 10px;
+    padding: 6px 15px;
     border-radius: 5px;
     font-size: 14px;
+    color: #333333;
+    margin-top: -5px;
 }
 
 main {
@@ -104,4 +106,7 @@ ul li a {
 
 ul li a:hover {
     color: #008CBA;
+}
+h2 {
+    text-align: center;
 }

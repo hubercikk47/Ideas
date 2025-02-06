@@ -14,9 +14,10 @@
             <ul>
                 <li><a href="{% url 'idea' %}">Strona Główna</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}">Wyloguj</a></li>
+
                     <li><a href="{% url 'post' %}">Dodaj post</a></li>
                     <li><a href="{% url 'comm' %}">Dodaj komentarz</a></li>
+                    <li><a href="{% url 'logout' %}">Wyloguj</a></li>
                     <li class="login_name">{{ user.username }}</li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>
@@ -29,6 +30,7 @@
     <main>
         <article>
             <h2>Pomysły</h2>
+            <div class="main">
             {% if myideas %}
             <ul>
                 {% for idea in myideas %}
@@ -40,6 +42,7 @@
                 {% endfor %}
             </ul>
             {% endif %}
+            </div>
         </article>
     </main>
 </body>

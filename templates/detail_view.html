@@ -30,6 +30,7 @@
     <main>
         <article>
             <h2>Szczegóły</h2>
+        <div class="main">
             {% if idea %}
                 <ul>
                     <li><strong>Nazwa:</strong> {{ idea.name }}</li>
@@ -54,6 +55,7 @@
             {% else %}
                 <p>Brak komentarzy.</p>
             {% endif %}
+        </div>
         </article>
     </main>
 </body>
